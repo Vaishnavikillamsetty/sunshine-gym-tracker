@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunshine Gym Tracker</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #111;
+            color: #fff;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        header {
+            width: 100%;
+            top: 0;
+            padding: 1rem 0;
+            position: fixed;
+            text-align: left;
+            color: #28a745;
+            font-size: 75px;
+            font-weight: bold;
+            z-index: 1000;
+            height: 14%;
+        }
+        main {
+            margin-top: 100px;
+            padding: 1rem;
+            background-image: url('image/gym1.jpg'); 
+            background-size: cover;
+            background-position: center;
+            width: 100%;
+            height: 100%;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; 
+            align-items: center; 
+        }
+        h1 {
+            font-size: 3rem;
+            text-align: left;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+        h3 {
+            font-size: 3rem;
+            text-align: left;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+        p {
+            font-size: 1rem;
+            text-align: left;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+        button {
+            background-color: #28a745;
+            color: #fff;
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            justify-content: space-between; 
+            margin: 0 5rem; 
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        section {
+            width: 80%;
+            max-width: 600px;
+            background-color: #222;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(219, 192, 192, 0);
+            display: none;
+        }
+        section.active {
+            display: block;
+        }
+        span {
+            color: #ff4d5a;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        label {
+            display: block;
+            margin: 0.5rem 0 0.2rem;
+            text-align: left;
+            color: #ddd;
+        }
+        input,
+        select {
+            width: 100%;
+            padding: 0.7rem;
+            margin-bottom: 1rem;
+            border: none;
+            border-radius: 5px;
+            border-radius: 5px;
+            background-color: #c9c1c1; 
+            color: #000; 
+        }
+        footer {
+            width: 100%;
+            padding: 1rem 0;
+            background-color: #222;
+            color: #ddd;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            z-index: 1000;
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: center; 
+            align-items: center;
+        }
+        #final-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 100vh; /* Full height for vertical centering */
+            background-color: #111; /* Ensure it blends with the page design */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 id="name">sun<span>shine</span></h1>
+    </header>
+    <main>
+        <h3>Welcome to Sunshine Gym</h3>
+        <p>Push yourself because no one else is going to do it for you</p>
+        <p>The pain you feel today will be the strength you feel tomorrow</p>
+        <button onclick="startTracker()">Get Started</button>
+    </main>
+    <section id="login-section">
+        <h2>Login</h2>
+        <form id="login-form">
+            <label for="user-name">Name:</label>
+            <input type="text" id="user-name" placeholder="Enter your name" required>
+            <label for="roll-no">Roll Number:</label>
+            <input type="text" id="roll-no" placeholder="Enter your roll number" required>
+            <button type="button" onclick="validateLogin()">Next</button>
+        </form>
+    </section>
+    <section id="attendance-section">
+        <h2>attendance</h2>
+        <form id="attendance-form">
+            <label for="date">Date:</label>
+            <input type="date" id="date" required>
+            <label for="time-in">Time In:</label>
+            <input type="time" id="time-in" required>
+            <label for="time-out">Time Out:</label>
+            <input type="time" id="time-out" required>
+            <button type="button" onclick="goBackToLogin()">Back</button>
+            <button type="button" onclick="goToWorkout()">Next</button>
+        </form>
+    </section>
+    <section id="workout-section">
+        <h2>Workout Details</h2>
+        <form id="workout-form">
+            <label for="exercise">Exercise:</label>
+            <select id="exercise" required>
+                <option value="Push-Ups">Push-Ups</option>
+                <option value="Squats">Squats</option>
+                <option value="Bench Press">Bench Press</option>
+                <option value="Deadlift">Deadlift</option>
+                <option value="resistance band">resistance band</option>
+                <option value="treadmil">treadmil</option>
+                <option value="barbell">barbell</option>
+                <option value="elliptical trainer">elliptical trainer</option>
+                <option value="kettlebell">kettlebell</option>
+                <option value="indoor rower">indoor rower</option>
+                <option value="cable machines">cable machines</option>
+                <option value="pull-up bar">pull-up bar</option>
+                <option value="spin bike">spin bike</option>
+                <option value="stablility ball">stablility ball</option>
+                <option value="cardio equipment">cardio equipment</option>
+                <option value="jump rope">jump rope</option>
+                <option value="smith machine">smith machine</option>
+                <option value="foam roller">foam roller</option>
+                <option value="dumbbell">dumbbell</option>
+                <option value="leg press">leg press</option>
+                <option value="power rack">power rack</option>
+                <option value="squat rack">squat rack</option>
+                <option value="battle ropes">battle ropes</option>
+                <option value="exercise bike">exercise bike</option>
+                <option value="leg curl machine">leg curl machine</option>
+                <option value="leg extension machine">leg extension machine</option>
+                <option value="medicine ball">medicine ball</option>
+            </select>
+            <label for="sets">Sets:</label>
+            <input type="number" id="sets" required>
+            <label for="reps">Reps:</label>
+            <input type="number" id="reps" required>
+            <button type="button" onclick="goBackToAttendance()">Back</button>
+            <button type="button" onclick="goToSummary()">Next</button>
+        </form>
+    </section>
+    <section id="summary-section">
+        <h2>Summary</h2>
+        <div id="login-summary"></div>
+        <div id="attendance-summary"></div>
+        <div id="workout-summary"></div>
+        <button type="button" onclick="goBackToWorkout()">Back</button>
+        <button onclick="submit()">submit</button>
+    </section>
+    <section id="final-section" style="display: none;">
+        <h2>Thank You!</h2>
+        <p>Your details have been successfully submitted. Stay consistent and achieve your fitness goals!</p>
+        <button onclick="restart()">Restart</button>
+    </section>    
+    <footer>
+        <p>&copy 2024 Sunshine Gym Tracker | Developed by our team</p>
+    </footer>    
+    <script>
+        let userName="";
+        function startTracker() {
+            document.querySelector('main').style.display = 'none';
+            document.getElementById('login-section').style.display = 'block';
+        }
+        function validateLogin() {
+            const userName = document.getElementById('user-name').value.trim();
+            const rollNo = document.getElementById('roll-no').value.trim();
+            if (!userName || !rollNo) {
+                alert("Please enter both your name and roll number!");
+                return;
+            }
+            document.getElementById('login-section').style.display = 'none';
+            document.getElementById('attendance-section').classList.add('active');
+        }
+        function goToWorkout() {
+            const date = document.getElementById('date').value;
+            const timeIn = document.getElementById('time-in').value;
+            const timeOut = document.getElementById('time-out').value;
+            if (!date || !timeIn || !timeOut) {
+                alert("Please fill in all attendance details!");
+                return;
+            }
+            document.getElementById('attendance-summary').innerHTML = `
+                <h3>Attendance</h3>
+                <p><strong>Date:</strong> ${date}</p>
+                <p><strong>Time In:</strong> ${timeIn}</p>
+                <p><strong>Time Out:</strong> ${timeOut}</p>
+            `;
+            document.getElementById('attendance-section').classList.remove('active');
+            document.getElementById('workout-section').classList.add('active');
+        }
+        function goToSummary() {
+            const exercise = document.getElementById('exercise').value;
+            const sets = document.getElementById('sets').value;
+            const reps = document.getElementById('reps').value;
+            if (!exercise || !sets || !reps) {
+                alert("Please fill in all workout details!");
+                return;
+            }
+            document.getElementById('workout-summary').innerHTML = `
+                <h3>Workout</h3>
+                <p><strong>Exercise:</strong> ${exercise}</p>
+                <p><strong>Sets:</strong> ${sets}</p>
+                <p><strong>Reps:</strong> ${reps}</p>
+            `;
+            document.getElementById('workout-section').classList.remove('active');
+            document.getElementById('summary-section').classList.add('active');
+        }
+        function finishSubmission() {
+            alert("Your records have been successfully submitted!");
+            document.querySelector('main').style.display = 'block';
+            document.getElementById('submission-section').style.display = 'none';
+        }
+        function submit() {
+            document.getElementById('summary-section').style.display = 'none';
+            document.getElementById('final-section').style.display = 'flex';
+        }
+        function restart() {
+            document.querySelector('main').style.display = 'block';
+            document.getElementById('login-section').style.display = 'none';
+            document.getElementById('attendance-section').classList.remove('active');
+            document.getElementById('workout-section').classList.remove('active');
+            document.getElementById('summary-section').style.display = 'none';
+            document.getElementById('final-section').style.display = 'none';
+            document.getElementById('login-form').reset();
+            document.getElementById('attendance-form').reset();
+            document.getElementById('workout-form').reset();
+        }
+        function goBackToLogin() {
+            document.getElementById('attendance-section').classList.remove('active');
+            document.getElementById('login-section').style.display = 'block';
+        }
+        function goBackToAttendance() {
+            document.getElementById('workout-section').classList.remove('active');
+            document.getElementById('attendance-section').classList.add('active');
+        }
+        function goBackToWorkout() {
+            document.getElementById('summary-section').classList.remove('active');
+            document.getElementById('workout-section').classList.add('active');
+        }
+    </script>
+</body>
+</html>
