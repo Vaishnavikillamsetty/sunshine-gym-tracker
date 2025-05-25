@@ -45,6 +45,7 @@ https://vaishnavikillamsetty.github.io/sunshine-gym-tracker/
 > *(You can insert a screenshot here once the site is live)*  
 ![screenshot](image/gym1.jpg)
 
+
 ---
 
 ## 🧑‍💻 Developer Info
